@@ -15,7 +15,7 @@ public class Classroom {
     private String building;
     private int floor;
     private int capacity;
-    private List<String> equipment = new ArrayList<>();
+    private List<String> equipments = new ArrayList<>();
     private boolean hasProjector;
     private boolean hasAirConditioning;
 
@@ -24,12 +24,12 @@ public class Classroom {
     }
 
     public void addEquipment(String item) {
-        if (!equipment.contains(item)) {
-            equipment.add(item);
+        if (!equipments.contains(item)) {
+            equipments.add(item);
         }
     }
 
     public void removeEquipment(String item) {
-        equipment.remove(item);
+        equipments.remove(item);
     }
 }
