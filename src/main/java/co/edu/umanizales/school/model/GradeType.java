@@ -1,42 +1,53 @@
 package co.edu.umanizales.school.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-@Getter
-@AllArgsConstructor
-public class GradeType {
-    private String code;
-    private String name;
-    private String description;
-    private double weight; // Weight in final grade calculation (0.0 to 1.0)
+/**
+ * Enum representing different types of grades and their weights in the final grade calculation.
+ */
+public enum GradeType {
+    QUIZ("QUIZ", "Quiz", "Short assessment", 0.15),
+    HOMEWORK("HW", "Homework", "Take-home assignment", 0.20),
+    MIDTERM("MID", "Midterm Exam", "Midterm examination", 0.25),
+    FINAL("FINAL", "Final Exam", "Final examination", 0.30),
+    PROJECT("PROJ", "Project", "Class project", 0.10);
 
-    // Common grade types
-    public static final GradeType QUIZ = new GradeType("QUIZ", "Quiz", "Short assessment", 0.15);
-    public static final GradeType HOMEWORK = new GradeType("HW", "Homework", "Take-home assignment", 0.20);
-    public static final GradeType MIDTERM = new GradeType("MID", "Midterm Exam", "Midterm examination", 0.25);
-    public static final GradeType FINAL = new GradeType("FINAL", "Final Exam", "Final examination", 0.30);
-    public static final GradeType PROJECT = new GradeType("PROJ", "Project", "Class project", 0.10);
+    @Getter
+    private final String code;
+    
+    @Getter
+    private final String name;
+    
+    @Getter
+    private final String description;
+    
+    @Getter
+    private final double weight; // Weight in final grade calculation (0.0 to 1.0)
 
+    GradeType(String code, String name, String description, double weight) {
+        this.code = code;
+        this.name = name;
+        this.description = description;
+        this.weight = weight;
+    }
+
+    /**
+     * Get the GradeType enum constant corresponding to the given code.
+     * @param code the grade type code (e.g., "QUIZ", "HW", "MID", etc.)
+     * @return the corresponding GradeType enum constant
+     * @throws IllegalArgumentException if the code is null or doesn't match any GradeType
+     */
     public static GradeType fromCode(String code) {
         if (code == null) {
             throw new IllegalArgumentException("Grade type code cannot be null");
         }
         
-        switch (code.toUpperCase()) {
-            case "QUIZ":
-                return QUIZ;
-            case "HW":
-                return HOMEWORK;
-            case "MID":
-                return MIDTERM;
-            case "FINAL":
-                return FINAL;
-            case "PROJ":
-                return PROJECT;
-            default:
-                throw new IllegalArgumentException("Unknown grade type: " + code);
+        for (GradeType type : values()) {
+            if (type.getCode().equalsIgnoreCase(code)) {
+                return type;
+            }
         }
+        throw new IllegalArgumentException("Unknown grade type: " + code);
     }
 
     @Override

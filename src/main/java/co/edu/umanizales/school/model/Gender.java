@@ -1,29 +1,41 @@
 package co.edu.umanizales.school.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-@Getter
-@AllArgsConstructor
-public class Gender {
-    private String code;
-    private String description;
+/**
+ * Enum representing different gender options.
+ */
+public enum Gender {
+    MALE("M", "Male"),
+    FEMALE("F", "Female"),
+    OTHER("O", "Other");
+
+    @Getter
+    private final String code;
     
-    // Common gender instances
-    public static final Gender MALE = new Gender("M", "Male");
-    public static final Gender FEMALE = new Gender("F", "Female");
-    public static final Gender OTHER = new Gender("O", "Other");
-    
+    @Getter
+    private final String description;
+
+    Gender(String code, String description) {
+        this.code = code;
+        this.description = description;
+    }
+
+    /**
+     * Get the Gender enum constant corresponding to the given code.
+     * @param code the gender code (M, F, or O)
+     * @return the corresponding Gender enum constant, or OTHER if no match is found
+     */
     public static Gender fromCode(String code) {
-        if (code == null) return OTHER;
-        
-        switch (code.toUpperCase()) {
-            case "M":
-                return MALE;
-            case "F":
-                return FEMALE;
-            default:
-                return OTHER;
+        if (code == null) {
+            return OTHER;
         }
+        
+        for (Gender gender : values()) {
+            if (gender.getCode().equalsIgnoreCase(code)) {
+                return gender;
+            }
+        }
+        return OTHER;
     }
 }
