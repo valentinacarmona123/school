@@ -1,0 +1,95 @@
+<mxfile host="app.diagrams.net" modified="20231106215100" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36" etag="Y2P1lX5X6y5jX9X8X9ZQ" version="22.0.6" type="device">
+  <diagram id="C5Rbs43oDa-KdzZeNtuy" name="Page-1">
+    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Clase Person -->
+        <mxCell id="person" value="&#60;b&#62;Person&#60;/b&#62;&#60;br&#62;-------------------&#60;br&#62;+ id: String&#60;br&#62;+ name: String&#60;br&#62;+ lastName: String&#60;br&#62;+ email: String&#60;br&#62;+ phone: String&#60;br&#62;+ birthDate: LocalDate&#60;br&#62;+ gender: Gender&#60;br&#62;+ address: String&#60;br&#62;+ active: boolean" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;" vertex="1" parent="1">
+          <mxGeometry x="240" y="120" width="160" height="240" as="geometry" />
+        </mxCell>
+        
+        <!-- Clase Teacher -->
+        <mxCell id="teacher" value="&#60;b&#62;Teacher&#60;/b&#62;&#60;br&#62;-------------------&#60;br&#62;+ teacherId: String&#60;br&#62;+ specialization: String&#60;br&#62;+ teachingSubjectIds: List&#60;String&#62;&#60;br&#62;+ fullTime: boolean&#60;br&#62;+ salary: double&#60;br&#62;-------------------&#60;br&#62;+ addSubject(subjectCode: String): void&#60;br&#62;+ removeSubject(subjectCode: String): void" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;" vertex="1" parent="1">
+          <mxGeometry x="80" y="400" width="200" height="200" as="geometry" />
+        </mxCell>
+        
+        <!-- Clase Student -->
+        <mxCell id="student" value="&#60;b&#62;Student&#60;/b&#62;&#60;br&#62;-------------------&#60;br&#62;+ studentId: String&#60;br&#62;+ grade: Grade&#60;br&#62;+ enrolledSubjects: List&#60;Subject&#62;&#60;br&#62;+ grades: List&#60;GradeRecord&#62;&#60;br&#62;-------------------&#60;br&#62;+ enrollSubject(subject: Subject): void&#60;br&#62;+ addGrade(grade: GradeRecord): void&#60;br&#62;+ calculateGPA(): double" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;" vertex="1" parent="1">
+          <mxGeometry x="400" y="400" width="200" height="220" as="geometry" />
+        </mxCell>
+        
+        <!-- Clase Subject -->
+        <mxCell id="subject" value="&#60;b&#62;Subject&#60;/b&#62;&#60;br&#62;-------------------&#60;br&#62;+ code: String&#60;br&#62;+ name: String&#60;br&#62;+ description: String&#60;br&#62;+ credits: int&#60;br&#62;+ targetGrade: Grade&#60;br&#62;+ teacherId: String&#60;br&#62;+ schedules: List&#60;Schedule&#62;&#60;br&#62;+ active: boolean" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;" vertex="1" parent="1">
+          <mxGeometry x="80" y="640" width="200" height="220" as="geometry" />
+        </mxCell>
+        
+        <!-- Clase Classroom -->
+        <mxCell id="classroom" value="&#60;b&#62;Classroom&#60;/b&#62;&#60;br&#62;-------------------&#60;br&#62;+ code: String&#60;br&#62;+ building: String&#60;br&#62;+ floor: int&#60;br&#62;+ capacity: int&#60;br&#62;+ equipments: List&#60;String&#62;&#60;br&#62;+ hasProjector: boolean&#60;br&#62;+ hasAirConditioning: boolean&#60;br&#62;-------------------&#60;br&#62;+ canAccommodate(numberOfStudents: int): boolean&#60;br&#62;+ addEquipment(item: String): void&#60;br&#62;+ removeEquipment(item: String): void" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;" vertex="1" parent="1">
+          <mxGeometry x="400" y="640" width="200" height="220" as="geometry" />
+        </mxCell>
+        
+        <!-- Herencia de Teacher a Person -->
+        <mxCell id="edge1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="teacher" target="person">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="180" y="400" />
+              <mxPoint x="320" y="400" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Herencia de Student a Person -->
+        <mxCell id="edge2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="student" target="person">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="500" y="400" />
+              <mxPoint x="320" y="400" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Relación entre Student y Subject -->
+        <mxCell id="edge3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=open;endSize=8;" edge="1" parent="1" source="student" target="subject">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="500" y="500" as="sourcePoint" />
+            <mxPoint x="500" y="640" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="500" y="500" />
+              <mxPoint x="180" y="500" />
+              <mxPoint x="180" y="640" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Relación entre Teacher y Subject -->
+        <mxCell id="edge4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=open;endSize=8;" edge="1" parent="1" source="teacher" target="subject">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="180" y="600" as="sourcePoint" />
+            <mxPoint x="280" y="600" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Relación entre Subject y Classroom -->
+        <mxCell id="edge5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=open;endSize=8;" edge="1" parent="1" source="subject" target="classroom">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Notas para las relaciones -->
+        <mxCell id="note1" value="1..*" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="200" y="550" width="30" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="note2" value="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="150" y="550" width="30" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="note3" value="1..*" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="320" y="750" width="30" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="note4" value="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="270" y="750" width="30" height="20" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

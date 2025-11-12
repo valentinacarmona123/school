@@ -7,24 +7,24 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.7.0</version>
+        <version>${spring-boot.version}</version>
         <relativePath/>
     </parent>
-    
+
     <groupId>co.edu.umanizales</groupId>
     <artifactId>school</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>School Management System</name>
     <description>School Management System</description>
-    
+
     <properties>
-        <java.version>11</java.version>
+        <java.version>21</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
-        <lombok.version>1.18.24</lombok.version>
-        <spring-boot.version>2.7.0</spring-boot.version>
+        <lombok.version>1.18.30</lombok.version>
+        <spring-boot.version>3.2.0</spring-boot.version>
     </properties>
     
     <dependencies>
