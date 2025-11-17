@@ -11,15 +11,19 @@ import java.time.LocalTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Schedule {
+    private String id;
     private DayOfWeek dayOfWeek;
     private LocalTime startTime;
     private LocalTime endTime;
     private Classroom classroom;
 
     public boolean overlapsWith(Schedule other) {
-        if (this.dayOfWeek != other.dayOfWeek) {
-            return false;
-        }
-        return !this.endTime.isBefore(other.startTime) && !this.startTime.isAfter(other.endTime);
+        return false;
+    }
+
+    public void setSubjectCode(String s) {
+    }
+
+    public void setClassroomCode(String s) {
     }
 }

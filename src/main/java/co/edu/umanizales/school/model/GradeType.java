@@ -41,9 +41,12 @@ public enum GradeType {
         if (code == null) {
             throw new IllegalArgumentException("Grade type code cannot be null");
         }
-        
+
+        String key = code.trim();
         for (GradeType type : values()) {
-            if (type.getCode().equalsIgnoreCase(code)) {
+            if (type.getCode().equalsIgnoreCase(key)
+                || type.getName().equalsIgnoreCase(key)
+                || type.name().equalsIgnoreCase(key)) {
                 return type;
             }
         }
@@ -52,6 +55,6 @@ public enum GradeType {
 
     @Override
     public String toString() {
-        return name;
+        return this.name;
     }
 }

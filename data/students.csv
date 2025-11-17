@@ -1,0 +1,5 @@
+"id","name","lastName","email","phone","birthDate","gender","address","active","studentId","grade"
+"ID003","Juan","Pérez García","juan.perez@school.edu","3001234501","2008-02-03","MALE","Calle 1 #5-10","true","STU10003","Tenth Grade"
+"ID002","daniel","ossa","d.ossa@school.edu","3001234501","2008-02-03","MALE","Calle 1 #5-10","true","STU100002","Tenth Grade"
+"ID002","daniel","ossa","d.ossa@school.edu","3001234501","2008-02-03","MALE","Calle 1 #5-10","true","STU10002","Tenth Grade"
+"ID001","Juan Updated","Pérez García","juan.perez@school.edu","3001234501","2008-02-03","MALE","Calle 1 #5-10","true","STU10001","Tenth Grade"

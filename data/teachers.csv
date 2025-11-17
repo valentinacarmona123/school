@@ -1,0 +1,4 @@
+"id","name","lastName","email","phone","birthDate","gender","address","active","teacherId","specialization","fullTime","salary"
+"TEACH002","Juan","Tabares","j.taba@school.edu","3016589472","1983-01-13","MALE","Calle 7 #5-75","true","TEACH002","Ingles","true","2500000.0"
+"TEACH001","Carlos Updated","Gomez","c.gomez@school.edu","3001234567","1985-05-20","MALE","Calle 5 #10-15","true","TEACH001","Matemáticas","true","2600000.0"
+"TEACH003","Daniela","Cruz","d.cruz@school.edu","3001234567","1985-05-20","FEMALE","Calle 5 #10-15","true","TEACH003","Quimica","true","2500000.0"

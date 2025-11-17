@@ -1,49 +1,92 @@
 package co.edu.umanizales.school.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-
 /**
- * Represents a grade level in the school system.
- * This is an immutable class that provides predefined grade levels.
+ * Enumeration representing grade levels in the school system.
  */
-@Getter
-@AllArgsConstructor
-public class Grade {
+public enum Grade {
+    GRADE_1("First Grade", 1),
+    GRADE_2("Second Grade", 2),
+    GRADE_3("Third Grade", 3),
+    GRADE_4("Fourth Grade", 4),
+    GRADE_5("Fifth Grade", 5),
+    GRADE_6("Sixth Grade", 6),
+    GRADE_7("Seventh Grade", 7),
+    GRADE_8("Eighth Grade", 8),
+    GRADE_9("Ninth Grade", 9),
+    GRADE_10("Tenth Grade", 10),
+    GRADE_11("Eleventh Grade", 11),
+    GRADE_12("Twelfth Grade", 12);
+
+    private final String displayName;
     private final int level;
-    private final String name;
-    
-    // Common grade levels
-    public static final Grade FIRST_GRADE = new Grade(1, "First Grade");
-    public static final Grade SECOND_GRADE = new Grade(2, "Second Grade");
-    public static final Grade THIRD_GRADE = new Grade(3, "Third Grade");
-    public static final Grade FOURTH_GRADE = new Grade(4, "Fourth Grade");
-    public static final Grade FIFTH_GRADE = new Grade(5, "Fifth Grade");
-    
-    private static final Grade[] GRADES = {
-        null,           // index 0 (unused)
-        FIRST_GRADE,   // index 1
-        SECOND_GRADE,  // index 2
-        THIRD_GRADE,   // index 3
-        FOURTH_GRADE,  // index 4
-        FIFTH_GRADE    // index 5
-    };
-    
+
+    Grade(String displayName, int level) {
+        this.displayName = displayName;
+        this.level = level;
+    }
+
+    public String getDisplayName() {
+        return displayName;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
     /**
      * Returns the Grade corresponding to the specified level.
-     * @param level the grade level (1-5)
-     * @return the corresponding Grade instance
-     * @throws IllegalArgumentException if the level is not between 1 and 5
+     * @param level the grade level (1-12)
+     * @return the corresponding Grade enum
+     * @throws IllegalArgumentException if the level is not between 1 and 12
      */
     public static Grade fromLevel(int level) {
-        if (level < 1 || level > 5) {
-            throw new IllegalArgumentException("Grade level must be between 1 and 5, but was: " + level);
+        for (Grade grade : Grade.values()) {
+            if (grade.level == level) {
+                return grade;
+            }
         }
-        return GRADES[level];
+        throw new IllegalArgumentException("Grade level must be between 1 and 12, but was: " + level);
     }
-    
+
+    /**
+     * Parse a grade from text. Accepts:
+     * - enum name (e.g., "GRADE_10")
+     * - display name (e.g., "Tenth Grade")
+     * - numeric level (e.g., "10")
+     */
+    public static Grade fromText(String text) {
+        if (text == null) {
+            throw new IllegalArgumentException("Grade text cannot be null");
+        }
+        String key = text.trim();
+
+        // Try enum name
+        for (Grade grade : Grade.values()) {
+            if (grade.name().equalsIgnoreCase(key)) {
+                return grade;
+            }
+        }
+
+        // Try display name
+        for (Grade grade : Grade.values()) {
+            if (grade.getDisplayName().equalsIgnoreCase(key)) {
+                return grade;
+            }
+        }
+
+        // Try numeric level
+        try {
+            int level = Integer.parseInt(key);
+            return fromLevel(level);
+        } catch (NumberFormatException ignore) {
+            // fallthrough
+        }
+
+        throw new IllegalArgumentException("Unknown grade: " + text);
+    }
+
     @Override
     public String toString() {
-        return name;
+        return displayName;
     }
 }

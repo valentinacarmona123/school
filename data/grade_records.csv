@@ -1,0 +1,4 @@
+"id","studentId","subjectCode","gradeType","score","date"
+"GRADE002","STU10001","ING101","Final Exam","4.0","2025-11-16"
+"GRADE001","STU10001","MAT101","Final Exam","4.5","2025-11-16"
+"GRADE01","STU10001","MAT101","Final Exam","5.0","2025-11-16"

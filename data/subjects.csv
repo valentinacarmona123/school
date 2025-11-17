@@ -1,0 +1,4 @@
+"code","name","description","credits","targetGrade","teacherId","active"
+"MAT101","Matemáticas I","Álgebra y Geometría básica","4","Tenth Grade","TEACH001","true"
+"QUIM101","Quimica I","Quimica inorganica","5","Tenth Grade","TEACH003","true"
+"ING101","Ingles I","A1-2","4","Tenth Grade","TEACH002","true"

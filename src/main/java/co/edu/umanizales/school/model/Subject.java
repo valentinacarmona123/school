@@ -41,8 +41,7 @@ public class Subject {
      * @param code Must not be null or empty (after trimming)
      * @throws IllegalArgumentException if code is null or empty
      */
-    public void
-    setCode(String code) {
+    public void setCode(String code) {
         if (code == null || code.trim().isEmpty()) {
             throw new IllegalArgumentException("Subject code is required");
         }

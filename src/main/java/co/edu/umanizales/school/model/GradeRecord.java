@@ -29,4 +29,44 @@ public class GradeRecord {
         if (score >= 2.0) return "D";
         return "F";
     }
+
+    public void setStudentId(String s) {
+        if (s == null || s.trim().isEmpty()) {
+            this.student = null;
+            return;
+        }
+        if (this.student == null) {
+            this.student = new Student();
+        }
+        this.student.setStudentId(s);
+    }
+
+    public void setSubjectCode(String s) {
+        if (s == null || s.trim().isEmpty()) {
+            this.subject = null;
+            return;
+        }
+        if (this.subject == null) {
+            this.subject = new Subject();
+        }
+        this.subject.setCode(s);
+    }
+
+    public String getStudentId() {
+        return this.student != null ? this.student.getStudentId() : null;
+    }
+
+    public String getSubjectCode() {
+        return this.subject != null ? this.subject.getCode() : null;
+    }
+
+    public void setGradeType(GradeType gradeType) {
+        this.type = gradeType;
+    }
+
+    public GradeType getGradeType() {
+        return this.type;
+    }
+
+
 }

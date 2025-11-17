@@ -4,7 +4,8 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        
+
+
         <!-- Clase Person -->
         <mxCell id="person" value="&#60;b&#62;Person&#60;/b&#62;&#60;br&#62;-------------------&#60;br&#62;+ id: String&#60;br&#62;+ name: String&#60;br&#62;+ lastName: String&#60;br&#62;+ email: String&#60;br&#62;+ phone: String&#60;br&#62;+ birthDate: LocalDate&#60;br&#62;+ gender: Gender&#60;br&#62;+ address: String&#60;br&#62;+ active: boolean" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;" vertex="1" parent="1">
           <mxGeometry x="240" y="120" width="160" height="240" as="geometry" />

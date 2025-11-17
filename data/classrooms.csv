@@ -1,0 +1,4 @@
+"code","building","floor","capacity","hasProjector","hasAirConditioning","equipments"
+"AULA102","Edificio A","1","40","true","true","Proyector;Pizarra Inteligente;Computadora"
+"AULA103","Edificio B","1","45","true","true","Proyector;Pizarra Inteligente;Computadora;Laboratorio"
+"AULA101","Edificio A","1","40","true","true","Proyector;Pizarra Inteligente;Computadora"

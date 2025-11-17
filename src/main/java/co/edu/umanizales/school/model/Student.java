@@ -41,9 +41,15 @@ public class Student extends Person {
         if (grades.isEmpty()) {
             return 0.0;
         }
-        return grades.stream()
-                .mapToDouble(GradeRecord::getScore)
-                .average()
-                .orElse(0.0);
+        double total = 0.0;
+        int count = 0;
+        for (GradeRecord grade : grades) {
+            total += grade.getScore();
+            count++;
+        }
+        if (count == 0) {
+            return 0.0;
+        }
+        return total / count;
     }
 }
