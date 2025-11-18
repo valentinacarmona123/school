@@ -17,13 +17,14 @@ public class Schedule {
     private LocalTime endTime;
     private Classroom classroom;
 
+    //over>sirve para saber si dos horarios se cruzan
     public boolean overlapsWith(Schedule other) {
         return false;
     }
 
-    public void setSubjectCode(String s) {
+    public void setSubjectCode(String s) { //vacio por si se quiere asignar una materia por su codigo
     }
 
-    public void setClassroomCode(String s) {
+    public void setClassroomCode(String s) { //vacio por si se quiere asignar un salon por su codigo
     }
 }

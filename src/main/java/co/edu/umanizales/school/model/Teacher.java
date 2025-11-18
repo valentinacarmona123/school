@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = true) //clase hereda de otra clase y quieres que la comparación entre objetos tenga en cuenta:Los atributos de la clase hija Y también los atributos de la clase padre
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

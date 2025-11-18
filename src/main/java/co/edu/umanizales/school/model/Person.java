@@ -6,10 +6,10 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-public abstract class Person {
+@Data //no escribir getters, setters, toString
+@NoArgsConstructor //constructores vacios
+@AllArgsConstructor //constructores con todos los atributos
+public abstract class Person {//clase base abstracta que representa una persona
     protected String id;
     protected String name;
     protected String lastName;

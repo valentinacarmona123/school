@@ -30,7 +30,7 @@ public class Subject {
      * The schedules list is initialized as an empty ArrayList.
      */
     public Subject() {
-        this.schedules = new ArrayList<>();
+        this.schedules = new ArrayList<>(); //crear lista vacia
         this.active = true;
     }
 
@@ -43,6 +43,7 @@ public class Subject {
      */
     public void setCode(String code) {
         if (code == null || code.trim().isEmpty()) {
+            //Si el código está mal, el programa no sigue.
             throw new IllegalArgumentException("Subject code is required");
         }
         this.code = code.trim();
@@ -166,7 +167,7 @@ public class Subject {
      */
     public void setActive(boolean active) {
         this.active = active;
-    }
+    } //Para cambiar el valor del atributo active desde afuera de la clase.
 
     // Business Logic Methods
 

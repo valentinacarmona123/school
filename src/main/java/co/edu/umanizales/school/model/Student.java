@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = true) //Hace que la comparación de estudiantes (equals) incluya lo heredado de Person
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -27,7 +27,7 @@ public class Student extends Person {
         this.grade = grade;
     }
 
-    public void enrollSubject(Subject subject) {
+    public void enrollSubject(Subject subject) { //Si la materia NO está en la lista de materias inscritas, la agrego.
         if (!enrolledSubjects.contains(subject)) {
             enrolledSubjects.add(subject);
         }
@@ -38,7 +38,7 @@ public class Student extends Person {
     }
 
     public double calculateGPA() {
-        if (grades.isEmpty()) {
+        if (grades.isEmpty()) { //saber si una lista o un texto está vacío.
             return 0.0;
         }
         double total = 0.0;

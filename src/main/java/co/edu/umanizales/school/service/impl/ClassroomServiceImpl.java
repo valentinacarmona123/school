@@ -9,15 +9,15 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 
 @Service
-public class ClassroomServiceImpl implements ClassroomService {
+public class ClassroomServiceImpl implements ClassroomService { //
     private final ClassroomCsvRepository classroomRepository;
 
-    @Autowired
+    @Autowired //inyección de dependencias
     public ClassroomServiceImpl(ClassroomCsvRepository classroomRepository) {
         this.classroomRepository = classroomRepository;
     }
 
-    @Override
+    @Override //
     public List<Classroom> findAll() {
         return classroomRepository.findAll();
     }

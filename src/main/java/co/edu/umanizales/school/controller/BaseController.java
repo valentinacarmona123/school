@@ -9,8 +9,9 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
-public abstract class BaseController<T, ID> {
-    protected abstract BaseService<T, ID> getService();
+//abstract: no se puede crear un objeto directamente de esta clase
+public abstract class BaseController<T, ID> { //t>tipo de entidad, id>tipo de id
+    protected abstract BaseService<T, ID> getService(); //Obliga a las clases hijas a devolver su service.
 
     @GetMapping
     public ResponseEntity<List<T>> getAll() {

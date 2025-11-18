@@ -3,7 +3,7 @@ package co.edu.umanizales.school.model;
 /**
  * Enumeration representing grade levels in the school system.
  */
-public enum Grade {
+public enum Grade { //clase con valores fijos
     GRADE_1("First Grade", 1),
     GRADE_2("Second Grade", 2),
     GRADE_3("Third Grade", 3),
@@ -17,21 +17,21 @@ public enum Grade {
     GRADE_11("Eleventh Grade", 11),
     GRADE_12("Twelfth Grade", 12);
 
-    private final String displayName;
-    private final int level;
+    private final String displayName; //como se muestra (First Grade)
+    private final int level; // el nivel (1), final es que no puede cambiar
 
-    Grade(String displayName, int level) {
+    Grade(String displayName, int level) { //constructor que recibe los valores definidos arriba
         this.displayName = displayName;
         this.level = level;
     }
 
     public String getDisplayName() {
         return displayName;
-    }
+    } //retorna el valor de displayName
 
     public int getLevel() {
         return level;
-    }
+    } //retorna el valor de level
 
     /**
      * Returns the Grade corresponding to the specified level.
@@ -39,12 +39,14 @@ public enum Grade {
      * @return the corresponding Grade enum
      * @throws IllegalArgumentException if the level is not between 1 and 12
      */
-    public static Grade fromLevel(int level) {
-        for (Grade grade : Grade.values()) {
+    //convierte un numero en el enum
+    public static Grade fromLevel(int level) { //metodo que permite buscar el grado por el numero
+        for (Grade grade : Grade.values()) { //lista todos los grados del enum los reccore
             if (grade.level == level) {
                 return grade;
             }
         }
+        // lanza un error si no encuentra el grado
         throw new IllegalArgumentException("Grade level must be between 1 and 12, but was: " + level);
     }
 
@@ -54,39 +56,40 @@ public enum Grade {
      * - display name (e.g., "Tenth Grade")
      * - numeric level (e.g., "10")
      */
+    // convierte texto en el numero del grado
     public static Grade fromText(String text) {
         if (text == null) {
             throw new IllegalArgumentException("Grade text cannot be null");
         }
         String key = text.trim();
 
-        // Try enum name
+        // con el nombre del enum
         for (Grade grade : Grade.values()) {
             if (grade.name().equalsIgnoreCase(key)) {
                 return grade;
             }
         }
 
-        // Try display name
+        // con el nombre del grado
         for (Grade grade : Grade.values()) {
             if (grade.getDisplayName().equalsIgnoreCase(key)) {
                 return grade;
             }
         }
 
-        // Try numeric level
+        // convertirlo a numero
         try {
             int level = Integer.parseInt(key);
             return fromLevel(level);
         } catch (NumberFormatException ignore) {
             // fallthrough
         }
-
+//si no funciono nada, error
         throw new IllegalArgumentException("Unknown grade: " + text);
     }
 
-    @Override
+    @Override //sobreescribe el metodo toString
     public String toString() {
         return displayName;
-    }
+    } //retorna el valor de displayName
 }
