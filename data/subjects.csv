@@ -1,4 +1,5 @@
 "code","name","description","credits","targetGrade","teacherId","active"
-"MAT101","Matemáticas I","Álgebra y Geometría básica","4","Tenth Grade","TEACH001","true"
-"QUIM101","Quimica I","Quimica inorganica","5","Tenth Grade","TEACH003","true"
-"ING101","Ingles I","A1-2","4","Tenth Grade","TEACH002","true"
+"QUIM-1","Quimica","Curso basico de quimica","4","First Grade","TCH-04","true"
+"LEN-1","Lenguaje","Curso básico de lenguaje","3","First Grade","TCH-02","true"
+"MAT-1","Matemáticas","Curso básico de matemáticas","3","First Grade","TCH-01","true"
+"ING-1","Ingles","Curso básico de ingles","3","First Grade","TCH-04","true"

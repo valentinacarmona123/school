@@ -1,0 +1,79 @@
+{
+  "info": {
+    "_postman_id": "2a2b7c3d-9d8e-4f1c-8abc-abcdef123456",
+    "name": "School API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Colección completa de la School API con endpoints CRUD para Teachers, Students, Classrooms, Subjects, Schedules y Grade Records. Subject usa un objeto teacher."
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:8080" },
+    { "key": "teacherId", "value": "TCH-001" },
+    { "key": "subjectCode", "value": "MAT-101" },
+    { "key": "studentId", "value": "STD-001" },
+    { "key": "classroomCode", "value": "A-101" },
+    { "key": "scheduleId", "value": "SCH-001" },
+    { "key": "gradeRecordId", "value": "GR-001" }
+  ],
+  "item": [
+    {
+      "name": "Teachers",
+      "item": [
+        {"name":"List Teachers","request":{"method":"GET","header":[],"url":"{{baseUrl}}/api/teachers","description":"curl -X GET '{{baseUrl}}/api/teachers' -H 'accept: application/json'"}},
+        {"name":"Get Teacher by ID","request":{"method":"GET","header":[],"url":"{{baseUrl}}/api/teachers/{{teacherId}}","description":"curl -X GET '{{baseUrl}}/api/teachers/{{teacherId}}' -H 'accept: application/json'"}},
+        {"name":"Create Teacher","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"teacherId\":\"{{teacherId}}\",\"id\":\"P-001\",\"name\":\"Ada\",\"lastName\":\"Lovelace\",\"email\":\"ada@example.com\",\"phone\":\"123456789\",\"birthDate\":\"1980-01-01\",\"gender\":\"FEMALE\",\"address\":\"Street 123\",\"active\":true,\"specialization\":\"Mathematics\",\"fullTime\":true,\"salary\":5000,\"teachingSubjectIds\":[\"{{subjectCode}}\"]}"},"url":"{{baseUrl}}/api/teachers","description":"curl -X POST '{{baseUrl}}/api/teachers' -H 'Content-Type: application/json' -d '{...}'"}},
+        {"name":"Update Teacher","request":{"method":"PUT","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"teacherId\":\"{{teacherId}}\",\"id\":\"P-001\",\"name\":\"Ada\",\"lastName\":\"Lovelace\",\"email\":\"ada@example.com\",\"phone\":\"123456789\",\"birthDate\":\"1980-01-01\",\"gender\":\"FEMALE\",\"address\":\"Street 123\",\"active\":true,\"specialization\":\"Mathematics\",\"fullTime\":false,\"salary\":5200,\"teachingSubjectIds\":[\"{{subjectCode}}\"]}"},"url":"{{baseUrl}}/api/teachers/{{teacherId}}","description":"curl -X PUT '{{baseUrl}}/api/teachers/{{teacherId}}' -H 'Content-Type: application/json' -d '{...}'"}},
+        {"name":"Delete Teacher","request":{"method":"DELETE","header":[],"url":"{{baseUrl}}/api/teachers/{{teacherId}}","description":"curl -X DELETE '{{baseUrl}}/api/teachers/{{teacherId}}'"}}
+      ]
+    },
+    {
+      "name": "Students",
+      "item": [
+        {"name":"List Students","request":{"method":"GET","header":[],"url":"{{baseUrl}}/api/students","description":"curl -X GET '{{baseUrl}}/api/students' -H 'accept: application/json'"}},
+        {"name":"Get Student by ID","request":{"method":"GET","header":[],"url":"{{baseUrl}}/api/students/{{studentId}}","description":"curl -X GET '{{baseUrl}}/api/students/{{studentId}}' -H 'accept: application/json'"}},
+        {"name":"Create Student","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"studentId\":\"{{studentId}}\",\"id\":\"S-001\",\"name\":\"Alan\",\"lastName\":\"Turing\",\"email\":\"alan@example.com\",\"phone\":\"987654321\",\"birthDate\":\"2008-05-12\",\"gender\":\"MALE\",\"address\":\"Avenue 456\",\"active\":true,\"grade\":\"FIFTH\"}"},"url":"{{baseUrl}}/api/students","description":"curl -X POST '{{baseUrl}}/api/students' -H 'Content-Type: application/json' -d '{...}'"}},
+        {"name":"Update Student","request":{"method":"PUT","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"studentId\":\"{{studentId}}\",\"id\":\"S-001\",\"name\":\"Alan Mathison\",\"lastName\":\"Turing\",\"email\":\"alan@example.com\",\"phone\":\"987654321\",\"birthDate\":\"2008-05-12\",\"gender\":\"MALE\",\"address\":\"Avenue 456\",\"active\":true,\"grade\":\"FIFTH\"}"},"url":"{{baseUrl}}/api/students/{{studentId}}","description":"curl -X PUT '{{baseUrl}}/api/students/{{studentId}}' -H 'Content-Type: application/json' -d '{...}'"}},
+        {"name":"Delete Student","request":{"method":"DELETE","header":[],"url":"{{baseUrl}}/api/students/{{studentId}}","description":"curl -X DELETE '{{baseUrl}}/api/students/{{studentId}}'"}}
+      ]
+    },
+    {
+      "name": "Classrooms",
+      "item": [
+        {"name":"List Classrooms","request":{"method":"GET","header":[],"url":"{{baseUrl}}/api/classrooms","description":"curl -X GET '{{baseUrl}}/api/classrooms' -H 'accept: application/json'"}},
+        {"name":"Get Classroom by Code","request":{"method":"GET","header":[],"url":"{{baseUrl}}/api/classrooms/{{classroomCode}}","description":"curl -X GET '{{baseUrl}}/api/classrooms/{{classroomCode}}' -H 'accept: application/json'"}},
+        {"name":"Create Classroom","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"code\":\"{{classroomCode}}\",\"building\":\"Science\",\"floor\":2,\"capacity\":35,\"equipments\":[\"Projector\",\"Whiteboard\"],\"hasProjector\":true,\"hasAirConditioning\":false}"},"url":"{{baseUrl}}/api/classrooms","description":"curl -X POST '{{baseUrl}}/api/classrooms' -H 'Content-Type: application/json' -d '{...}'"}},
+        {"name":"Update Classroom","request":{"method":"PUT","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"code\":\"{{classroomCode}}\",\"building\":\"Science\",\"floor\":2,\"capacity\":40,\"equipments\":[\"Projector\",\"Whiteboard\",\"Speakers\"],\"hasProjector\":true,\"hasAirConditioning\":true}"},"url":"{{baseUrl}}/api/classrooms/{{classroomCode}}","description":"curl -X PUT '{{baseUrl}}/api/classrooms/{{classroomCode}}' -H 'Content-Type: application/json' -d '{...}'"}},
+        {"name":"Delete Classroom","request":{"method":"DELETE","header":[],"url":"{{baseUrl}}/api/classrooms/{{classroomCode}}","description":"curl -X DELETE '{{baseUrl}}/api/classrooms/{{classroomCode}}'"}}
+      ]
+    },
+    {
+      "name": "Subjects",
+      "item": [
+        {"name":"List Subjects","request":{"method":"GET","header":[],"url":"{{baseUrl}}/api/subjects","description":"curl -X GET '{{baseUrl}}/api/subjects' -H 'accept: application/json'"}},
+        {"name":"Get Subject by Code","request":{"method":"GET","header":[],"url":"{{baseUrl}}/api/subjects/{{subjectCode}}","description":"curl -X GET '{{baseUrl}}/api/subjects/{{subjectCode}}' -H 'accept: application/json'"}},
+        {"name":"Create Subject","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"code\":\"{{subjectCode}}\",\"name\":\"Matemáticas\",\"description\":\"Curso básico de matemáticas\",\"credits\":3,\"targetGrade\":\"FIFTH\",\"teacher\":{\"teacherId\":\"{{teacherId}}\"},\"active\":true}"},"url":"{{baseUrl}}/api/subjects","description":"curl -X POST '{{baseUrl}}/api/subjects' -H 'Content-Type: application/json' -d '{...}'"}},
+        {"name":"Update Subject","request":{"method":"PUT","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"code\":\"{{subjectCode}}\",\"name\":\"Matemáticas Avanzadas\",\"description\":\"Álgebra y geometría\",\"credits\":4,\"targetGrade\":\"FIFTH\",\"teacher\":{\"teacherId\":\"{{teacherId}}\"},\"active\":true}"},"url":"{{baseUrl}}/api/subjects/{{subjectCode}}","description":"curl -X PUT '{{baseUrl}}/api/subjects/{{subjectCode}}' -H 'Content-Type: application/json' -d '{...}'"}},
+        {"name":"Delete Subject","request":{"method":"DELETE","header":[],"url":"{{baseUrl}}/api/subjects/{{subjectCode}}","description":"curl -X DELETE '{{baseUrl}}/api/subjects/{{subjectCode}}'"}}
+      ]
+    },
+    {
+      "name": "Schedules",
+      "item": [
+        {"name":"List Schedules","request":{"method":"GET","header":[],"url":"{{baseUrl}}/api/schedules","description":"curl -X GET '{{baseUrl}}/api/schedules' -H 'accept: application/json'"}},
+        {"name":"Get Schedule by ID","request":{"method":"GET","header":[],"url":"{{baseUrl}}/api/schedules/{{scheduleId}}","description":"curl -X GET '{{baseUrl}}/api/schedules/{{scheduleId}}' -H 'accept: application/json'"}},
+        {"name":"Create Schedule","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"id\":\"{{scheduleId}}\",\"dayOfWeek\":\"MONDAY\",\"startTime\":\"08:00:00\",\"endTime\":\"09:30:00\",\"classroom\":{\"code\":\"{{classroomCode}}\"}}"},"url":"{{baseUrl}}/api/schedules","description":"curl -X POST '{{baseUrl}}/api/schedules' -H 'Content-Type: application/json' -d '{...}'"}},
+        {"name":"Update Schedule","request":{"method":"PUT","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"id\":\"{{scheduleId}}\",\"dayOfWeek\":\"MONDAY\",\"startTime\":\"09:30:00\",\"endTime\":\"11:00:00\",\"classroom\":{\"code\":\"{{classroomCode}}\"}}"},"url":"{{baseUrl}}/api/schedules/{{scheduleId}}","description":"curl -X PUT '{{baseUrl}}/api/schedules/{{scheduleId}}' -H 'Content-Type: application/json' -d '{...}'"}},
+        {"name":"Delete Schedule","request":{"method":"DELETE","header":[],"url":"{{baseUrl}}/api/schedules/{{scheduleId}}","description":"curl -X DELETE '{{baseUrl}}/api/schedules/{{scheduleId}}'"}}
+      ]
+    },
+    {
+      "name": "Grade Records",
+      "item": [
+        {"name":"List Grade Records","request":{"method":"GET","header":[],"url":"{{baseUrl}}/api/grade-records","description":"curl -X GET '{{baseUrl}}/api/grade-records' -H 'accept: application/json'"}},
+        {"name":"Get Grade Record by ID","request":{"method":"GET","header":[],"url":"{{baseUrl}}/api/grade-records/{{gradeRecordId}}","description":"curl -X GET '{{baseUrl}}/api/grade-records/{{gradeRecordId}}' -H 'accept: application/json'"}},
+        {"name":"Create Grade Record","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"id\":\"{{gradeRecordId}}\",\"student\":{\"studentId\":\"{{studentId}}\"},\"subject\":{\"code\":\"{{subjectCode}}\"},\"score\":4.2,\"date\":\"2024-09-15\",\"type\":\"QUIZ\",\"comments\":\"Buen desempeño\"}"},"url":"{{baseUrl}}/api/grade-records","description":"curl -X POST '{{baseUrl}}/api/grade-records' -H 'Content-Type: application/json' -d '{...}'"}},
+        {"name":"Update Grade Record","request":{"method":"PUT","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"id\":\"{{gradeRecordId}}\",\"student\":{\"studentId\":\"{{studentId}}\"},\"subject\":{\"code\":\"{{subjectCode}}\"},\"score\":4.6,\"date\":\"2024-10-01\",\"type\":\"MIDTERM\",\"comments\":\"Mejoró en el último examen\"}"},"url":"{{baseUrl}}/api/grade-records/{{gradeRecordId}}","description":"curl -X PUT '{{baseUrl}}/api/grade-records/{{gradeRecordId}}' -H 'Content-Type: application/json' -d '{...}'"}},
+        {"name":"Delete Grade Record","request":{"method":"DELETE","header":[],"url":"{{baseUrl}}/api/grade-records/{{gradeRecordId}}","description":"curl -X DELETE '{{baseUrl}}/api/grade-records/{{gradeRecordId}}'"}}
+      ]
+    }
+  ]
+}

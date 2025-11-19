@@ -2,6 +2,7 @@ package co.edu.umanizales.school.repository;
 
 import co.edu.umanizales.school.model.Grade;
 import co.edu.umanizales.school.model.Subject;
+import co.edu.umanizales.school.model.Teacher;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
 import com.opencsv.exceptions.CsvValidationException;
@@ -14,8 +15,10 @@ import java.util.*;
 public class SubjectCsvRepository implements CsvRepository<Subject, String> {
     private final String CSV_FILE_PATH = "data/subjects.csv";
     private final Map<String, Subject> subjects = new HashMap<>();
+    private final TeacherCsvRepository teacherRepository;
 
-    public SubjectCsvRepository() {
+    public SubjectCsvRepository(TeacherCsvRepository teacherRepository) {
+        this.teacherRepository = teacherRepository;
         loadFromCsv();
     }
 
@@ -83,7 +86,13 @@ public class SubjectCsvRepository implements CsvRepository<Subject, String> {
                     subject.setDescription(line[2]);
                     subject.setCredits(Integer.parseInt(line[3]));
                     subject.setTargetGrade(Grade.fromText(line[4]));
-                    subject.setTeacherId(line[5]);
+                    String teacherId = line[5];
+                    Teacher teacher = teacherRepository.findById(teacherId).orElseGet(() -> {
+                        Teacher t = new Teacher();
+                        t.setTeacherId(teacherId);
+                        return t;
+                    });
+                    subject.setTeacher(teacher);
                     subject.setActive(Boolean.parseBoolean(line[6]));
                     subjects.put(subject.getCode(), subject);
                 }
@@ -111,7 +120,7 @@ public class SubjectCsvRepository implements CsvRepository<Subject, String> {
                     subject.getDescription() != null ? subject.getDescription() : "",
                     String.valueOf(subject.getCredits()),
                     subject.getTargetGrade().toString(),
-                    subject.getTeacherId(),
+                    subject.getTeacher() != null ? subject.getTeacher().getTeacherId() : "",
                     String.valueOf(subject.isActive())
                 };
                 writer.writeNext(data);

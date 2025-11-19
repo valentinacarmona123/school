@@ -21,7 +21,7 @@ public class Subject {
     private String description;
     private int credits;
     private Grade targetGrade;
-    private String teacherId;
+    private Teacher teacher;
     private final List<Schedule> schedules;
     private boolean active;
 
@@ -118,22 +118,22 @@ public class Subject {
     }
 
     /**
-     * @return The ID of the teacher assigned to this subject
+     * @return The teacher assigned to this subject
      */
-    public String getTeacherId() {
-        return teacherId;
+    public Teacher getTeacher() {
+        return teacher;
     }
 
     /**
-     * Sets the teacher ID for this subject.
-     * @param teacherId Must not be null or empty (after trimming)
-     * @throws IllegalArgumentException if teacherId is null or empty
+     * Sets the teacher for this subject.
+     * @param teacher Must not be null
+     * @throws IllegalArgumentException if teacher is null
      */
-    public void setTeacherId(String teacherId) {
-        if (teacherId == null || teacherId.trim().isEmpty()) {
-            throw new IllegalArgumentException("Teacher ID is required");
+    public void setTeacher(Teacher teacher) {
+        if (teacher == null) {
+            throw new IllegalArgumentException("Teacher is required");
         }
-        this.teacherId = teacherId.trim();
+        this.teacher = teacher;
     }
 
     /**
@@ -224,7 +224,7 @@ public class Subject {
                 ", name='" + name + '\'' +
                 ", credits=" + credits +
                 ", targetGrade=" + targetGrade +
-                ", teacherId='" + teacherId + '\'' +
+                ", teacherId='" + (teacher != null ? teacher.getTeacherId() : null) + '\'' +
                 ", active=" + active +
                 '}';
     }
