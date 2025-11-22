@@ -7,6 +7,15 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import co.edu.umanizales.school.dto.DetalleEstadoDTO;
+import co.edu.umanizales.school.dto.DiaReporteDTO;
+import co.edu.umanizales.school.dto.ReporteEstudiantesDTO;
+import co.edu.umanizales.school.dto.ReporteEstudiantesWrapper;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/students")
 public class StudentController {
@@ -48,5 +57,32 @@ public class StudentController {
     public ResponseEntity<Void> delete(@PathVariable String id) {
         studentService.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping("/report")
+    public ResponseEntity<ReporteEstudiantesWrapper> getReport(
+            @RequestParam("fechaInicial") String fechaInicial,
+            @RequestParam("fechaFinal") String fechaFinal
+    ) {
+        LocalDate start = LocalDate.parse(fechaInicial);
+        LocalDate end = LocalDate.parse(fechaFinal);
+
+        List<Student> students = studentService.findAll();
+        int activos = (int) students.stream().filter(Student::isActive).count();
+        int noActivos = (int) students.stream().filter(s -> !s.isActive()).count();
+        int total = activos + noActivos;
+
+        List<DiaReporteDTO> dias = new ArrayList<>();
+        for (LocalDate d = start; !d.isAfter(end); d = d.plusDays(1)) {
+            List<DetalleEstadoDTO> detalle = Arrays.asList(
+                    new DetalleEstadoDTO("Activo", activos),
+                    new DetalleEstadoDTO("No activo", noActivos)
+            );
+            dias.add(new DiaReporteDTO(d, total, detalle));
+        }
+
+        ReporteEstudiantesDTO reporte = new ReporteEstudiantesDTO(start, end, dias);
+        ReporteEstudiantesWrapper wrapper = new ReporteEstudiantesWrapper(reporte);
+        return new ResponseEntity<>(wrapper, HttpStatus.OK);
     }
 }
